@@ -1,0 +1,532 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+:root {
+    --primary: #0ea5e9;
+    --primary-hover: #0284c7;
+    --primary-rgb: 14, 165, 233;
+    --secondary: #10b981;
+    --secondary-hover: #059669;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --border-color: rgba(226, 232, 240, 0.8);
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.12);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font: 'Plus Jakarta Sans', sans-serif;
+}
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font);
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #ecfdf5 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+/* Glassmorphism Header */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: var(--transition);
+}
+.logo i {
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.logo:hover {
+    transform: scale(1.03);
+}
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+.nav-links a:hover, 
+.nav-links a.active {
+    color: var(--primary);
+    background: rgba(14, 165, 233, 0.1);
+}
+.nav-links .btn-logout {
+    color: var(--danger);
+}
+.nav-links .btn-logout:hover {
+    color: white;
+    background: var(--danger);
+}
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+.nav-user .role-badge {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.role-badge.admin {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--danger);
+}
+.role-badge.pharmacist {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--secondary);
+}
+.role-badge.customer {
+    background: rgba(14, 165, 233, 0.15);
+    color: var(--primary);
+}
+/* Main Container Layout */
+main {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+/* Premium Card / Container Style */
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+/* Hero Section */
+.hero {
+    text-align: center;
+    margin-bottom: 48px;
+}
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+.hero h1 span {
+    background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+/* Form Styles */
+.form-group {
+    margin-bottom: 24px;
+}
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+.form-control {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    font-family: var(--font);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    outline: none;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+.form-control:focus {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+}
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+/* Checkbox and Select Custom style */
+.symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.symptom-checkbox-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: var(--transition);
+    user-select: none;
+}
+.symptom-checkbox-card:hover {
+    background: rgba(14, 165, 233, 0.05);
+    border-color: var(--primary);
+}
+.symptom-checkbox-card input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+.symptom-checkbox-card span {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+/* Button Custom Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: var(--font);
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+}
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    color: white;
+    box-shadow: 0 4px 14px rgba(14, 165, 233, 0.3);
+}
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+}
+.btn-secondary {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-hover) 100%);
+    color: white;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+.btn-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+.btn-light {
+    background: white;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+.btn-light:hover {
+    background: #f1f5f9;
+}
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+.btn-danger:hover {
+    background: #dc2626;
+}
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+/* Result Section & Dynamic Suggestion Layout */
+.results-section {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+@media(min-width: 992px) {
+    .results-section {
+        grid-template-columns: 2fr 3fr;
+    }
+}
+.disease-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-left: 5px solid var(--primary);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+}
+.disease-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+.medicine-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+.medicine-card:hover {
+    transform: scale(1.01);
+    border-color: var(--secondary);
+    box-shadow: var(--shadow-md);
+}
+.medicine-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+.medicine-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--dark);
+}
+.medicine-price {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--secondary);
+}
+.medicine-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+.med-info-row {
+    font-size: 0.9rem;
+}
+.med-info-row strong {
+    color: var(--text-primary);
+}
+.med-info-row span {
+    color: var(--text-secondary);
+}
+/* Auth Cards styling */
+.auth-container {
+    max-width: 500px;
+    margin: 40px auto;
+}
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.auth-header h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--dark);
+}
+/* Alert Notification Custom styles */
+.alert {
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.alert-success {
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: var(--secondary-hover);
+}
+.alert-danger {
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--danger);
+}
+/* Tables styling */
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.9);
+}
+th, td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+th {
+    background: rgba(241, 245, 249, 0.8);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+tr:hover td {
+    background: rgba(248, 250, 252, 0.6);
+}
+.action-btns {
+    display: flex;
+    gap: 8px;
+}
+/* Dashboard Statistics Style */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+.stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+.stat-icon.primary {
+    background: rgba(14, 165, 233, 0.15);
+    color: var(--primary);
+}
+.stat-icon.secondary {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--secondary);
+}
+.stat-icon.warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--warning);
+}
+.stat-info h4 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+.stat-info p {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.2;
+}
+/* Footer Section styling */
+footer {
+    background: rgba(15, 23, 42, 0.02);
+    border-top: 1px solid var(--border-color);
+    padding: 30px 24px;
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+/* Add Responsive improvements */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+}
